@@ -3,9 +3,10 @@ package com.android.vanguardhomeworkone
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayoutMediator
 
 //UI
@@ -16,17 +17,38 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 //여기서부터 플로팅액션버튼 클릭시 토스트 메세지 출력
-        var fAB : FloatingActionButton = findViewById(R.id.fAB)
+        var fAB: FloatingActionButton = findViewById(R.id.fAB)
 
-        fAB.setOnClickListener{
+        fAB.setOnClickListener {
             Toast.makeText(this, "플로팅 버튼 클릭", Toast.LENGTH_SHORT).show()
         }
-//여기서부터 뷰페이저2와 탭레이아웃 연결
-        val tabLayout = view.findViewById(R.id.tabLayout)
-        TabLayoutMediator(tabLayout, ViewPager2) { tab, position ->
-            tab.text = "OBJECT ${(position + 1)}"
-        }.attach()
+
+//여기서부터 탭레이아웃
+        val Tablay: View? = findViewById(R.id.tabLayout)
+        var click1 = findViewById<TabItem>(R.id.tab1)
+        var click2 = findViewById<TabItem>(R.id.tab2)
+
+        try {
+            click1.setOnClickListener{
+                Toast.makeText(this, "레이아웃 버튼 클릭", Toast.LENGTH_SHORT).show()
+            }
+        }catch (e:NullPointerException){
+            Toast.makeText(this, "1번 테스트", Toast.LENGTH_SHORT).show()
+        }
+        finally {
+
+        }
+        try {
+            click2.setOnClickListener{
+                Toast.makeText(this, "레이아웃 버튼 클릭", Toast.LENGTH_SHORT).show()
+            }
+        }catch (e:NullPointerException){
+            Toast.makeText(this, "2번 테스트", Toast.LENGTH_SHORT).show()
+        }
+        finally {
+
+        }
     }
-
-
 }
+
+
